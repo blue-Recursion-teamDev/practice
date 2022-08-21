@@ -8,17 +8,29 @@
 	<title>Document</title>
 </head>
 <body>
-	<div class="d-flex flex-column align-items-center text-danger mt-5">
-		<h1>ソフトウェア開発みくじ</h1>
-		<img src="img/omikuji.png" class="w-25 mt-5">
-		<button type="button" class="btn btn-danger mt-5">おみくじを引く</button>
-		<div class="d-flex justify-content-center text-danger pt-5">
-			<a href="about.html" class="text-danger">このおみくじについて</a>
-			<p class="px-1">|</p>
-			<a href="developers.html" class="text-danger">開発者一覧</a>
+	<div class="d-block" id="firstBlock">
+		<div class="d-flex flex-column align-items-center text-danger mt-5 d-block">
+			<h1>ソフトウェア開発みくじ</h1>
+			<img src="img/omikuji.png" class="w-25 mt-5">
+			<button type="button" class="btn btn-danger mt-5" onclick="toggleDisplay(document.getElementById('firstBlock'), document.getElementById('secondBlock'));">おみくじを引く</button>
+			<div class="d-flex justify-content-center text-danger pt-5">
+				<a href="about.html" class="text-danger">このおみくじについて</a>
+				<p class="px-1">|</p>
+				<a href="developers.html" class="text-danger">開発者一覧</a>
+			</div>
+			<p>©ソフトウェア開発みくじ</p>
 		</div>
-		<p>©ソフトウェア開発みくじ</p>
 	</div>
+	<div class="d-none" id="secondBlock">
+		<div class="d-flex flex-column align-items-center text-danger mt-5">
+			<div class="border border-danger">
+				<h1>ソフトウェア開発みくじ</h1>
+				<button type="button" class="btn btn-danger mt-5" onclick="toggleDisplay(document.getElementById('firstBlock'), document.getElementById('secondBlock'));">もう一度引く</button>
+				<p>©ソフトウェア開発みくじ</p>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="omikuji.js"></script>
 </body>
 
 </html>
