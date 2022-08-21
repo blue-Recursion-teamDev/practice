@@ -1,0 +1,46 @@
+/* common */
+body {
+    background: linear-gradient(rgba(255, 0, 242, 0.15),#fb01d17c);
+
+}
+/* header */
+/* main */
+main .container {
+    width: 450px;
+    margin: 0 auto;
+
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+main .imgDiv{
+    margin-bottom: 20px;
+}
+
+main .button{
+    margin-bottom: 30px;
+}
+
+main .links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+main a{
+    font-size: x-small;
+}
+
+main .red_line{
+    border-top: 1px solid red;
+}
+
+main .omikuji_frame{
+    border: solid;
+    border-color: red;
+}
+/* footer */
+footer {
+    text-align: center;
+}
