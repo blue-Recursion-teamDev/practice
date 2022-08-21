@@ -37,7 +37,7 @@ main .red_line{
 }
 
 main .omikuji_frame{
-    border: solid;
+    border: 10px solid;
     border-color: red;
 }
 /* footer */
