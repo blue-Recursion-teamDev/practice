@@ -22,10 +22,31 @@
 		</div>
 	</div>
 	<div class="d-none" id="secondBlock">
-		<div class="d-flex flex-column align-items-center text-danger mt-5">
-			<div class="border border-danger">
-				<h1>ソフトウェア開発みくじ</h1>
-				<button type="button" class="btn btn-danger mt-5" onclick="toggleDisplay(document.getElementById('firstBlock'), document.getElementById('secondBlock'));">もう一度引く</button>
+		<div class="d-flex flex-column justify-content-center align-items-center text-danger mt-5">
+			<div class="d-flex flex-column justify-content-center align-items-center text-danger border border-danger mt-5">
+				<div class="container d-flex flex-column align-items-center border-bottom">
+					<h1>ソフトウェア開発みくじ</h1>
+				</div>
+				<div class="d-flex flex-column align-items-center border-bottom">
+					<img id="img">
+					<h1 id="unsei" ></h1>
+				</div>
+				<div class="container d-flex flex-column align-items-center border-bottom">
+					<p id="comment"></p>
+				</div>
+				<div class="container d-flex flex-column align-items-center border-bottom">
+					<h2>ラッキー言語</h2>
+					<h4 id="lucky-language"></h4>
+				</div>
+				<div class="container d-flex flex-column align-items-center border-bottom">
+					<h2>ラッキーデータベース</h2>
+					<h4 id="lucky-database"></h4>
+				</div>
+				<div class="d-flex flex-column align-items-center">
+					<h2>ラッキーエディタ</h2>
+					<h4 id="lucky-editor"></h4>
+					<button type="button" class="btn btn-danger mt-5" onclick="toggleDisplay(document.getElementById('firstBlock'), document.getElementById('secondBlock'));">もう一度引く</button>
+				</div>
 				<p>©ソフトウェア開発みくじ</p>
 			</div>
 		</div>
@@ -34,4 +55,3 @@
 </body>
 
 </html>
-
