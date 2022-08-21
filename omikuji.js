@@ -19,10 +19,12 @@ function toggleDisplay(ele1, ele2) {
 	}
 }
 
+// 乱数生成
 function getRandomInt(max) {
 	return Math.floor(Math.random() * max);
 }
 
+// おみくじ
 class omikujiObject {
 	constructor(img, unsei, comment, luckyLanguage, luckyDatabase, luckyEditor) {
 		this.img = img;
@@ -34,6 +36,7 @@ class omikujiObject {
 	}
 }
 
+// おみくじの生成担当
 class God {
 	static imgDictionary = {
 		"大吉": "img/daikiti.png",
@@ -67,7 +70,7 @@ class God {
 		"VSCode"
 	]
 	
-
+	// おみくじの生成
 	static generateOmikuji(num) {
 		let omikujiList = [];
 
@@ -87,8 +90,11 @@ class God {
 	}
 }
 
+// おみくじのリスト生成
 const omikujiList = God.generateOmikuji(10);
 
+
+// おみくじ引く担当
 class Worshiper {
 	static drawOmikuji() {
 		let omikuji = omikujiList[getRandomInt(omikujiList.length)];
