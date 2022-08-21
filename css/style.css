@@ -33,12 +33,13 @@ main a{
 }
 
 main .red_line{
-    border-top: 1px solid red;
+    border-top: 1.5px solid red;
 }
 
 main .omikuji_frame{
     border: 10px solid;
     border-color: red;
+    background-color: white;
 }
 /* footer */
 footer {
