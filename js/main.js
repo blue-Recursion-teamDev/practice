@@ -1,87 +1,120 @@
-class Item{
-    constructor(unsei_img, unsei, explanation, lucky_language, lucky_dataBase, lucky_editor){
-        this.unsei_img = unsei_img;
-        this.unsei = unsei;
-        this.explanation = explanation;
-        this.lucky_language = lucky_language;
-        this.lucky_dataBase = lucky_dataBase;
-        this.lucky_editor = lucky_editor;
-    }
+function displayNone(ele) {
+	ele.classList.remove("d-block");
+	ele.classList.add("d-none");
 }
 
-let ItemList = [
-    new Item("img/ホッとする女性.png", "大吉", "説明1です", "ラッキー言語1です", "ラッキーDB1です", "ラッキーエディタ1です"),
-    new Item("img/落ち込む女性.png", "凶", "説明2です", "ラッキー言語2です", "ラッキーDB2です", "ラッキーエディタ2です")
-]
-
-class Screen{
-    static activate_Results_Screen(){
-        let results_screen = document.getElementById("result");
-        results_screen.style.visibility = "visible";
-    }   
-
-    static inactivate_Results_Screen(){
-        let results_screen = document.getElementById("result");
-        results_screen.style.visibility = "hidden";
-    }
-
-    static activate_Start_Screen(){
-        let start_screen = document.getElementById("start");
-        start_screen.style.visibility = "visible";
-    }
-
-    static inactivate_Start_Screen(){
-        let start_screen = document.getElementById("start");
-        start_screen.style.visibility = "hidden";
-    }
+function displayBlock(ele) {
+	ele.classList.remove("d-none");
+	ele.classList.add("d-block");
 }
 
-class Omikuji{
-    static execute_Omikuji(){
-        let random_number =  Math.floor(Math.random() * ItemList.length);
-        console.log(random_number)
-
-        let unsei_img = document.getElementById("unsei_img");
-        unsei_img.src = ItemList[random_number].unsei_img;
-
-        let unsei = document.getElementById("unsei");
-        unsei.innerHTML = ItemList[random_number].unsei;
-
-        let explanation = document.getElementById("explanation");
-        explanation.innerHTML = ItemList[random_number].explanation;
-
-        let lucky_language = document.getElementById("lucky_language");
-        lucky_language.innerHTML = ItemList[random_number].lucky_language;
-
-        let lucky_dataBase = document.getElementById("lucky_dataBase");
-        lucky_dataBase.innerHTML = ItemList[random_number].lucky_dataBase;
-
-        let lucky_editor = document.getElementById("lucky_editor");
-        lucky_editor.innerHTML = ItemList[random_number].lucky_editor;
-    }
+function toggleDisplay(ele1, ele2) {
+	Worshiper.drawOmikuji();
+	if (ele1.classList.contains("d-block")) {
+		displayNone(ele1);
+		displayBlock(ele2);
+	} else {
+		displayNone(ele2);
+		displayBlock(ele1);
+	}
 }
 
-class Button{
-    static detect_Start_Button(){
-        let start_button = document.getElementById("start_button");
-
-        start_button.addEventListener("click", function(){
-            console.log("detect_Start_Button");
-            Screen.activate_Results_Screen();
-            Screen.inactivate_Start_Screen();
-            Omikuji.execute_Omikuji();
-        })
-    }
-
-    static detect_Retry_Button(){
-        let retry_button = document.getElementById("retry_button");
-
-        retry_button.addEventListener("click", function(){
-            console.log("detect_Retry_Button");
-            Screen.activate_Start_Screen();
-            Screen.inactivate_Results_Screen();
-        })
-    }
+// 乱数生成
+function getRandomInt(max) {
+	return Math.floor(Math.random() * max);
 }
-Button.detect_Start_Button();
-Button.detect_Retry_Button();
+
+// おみくじ
+class omikujiObject {
+	constructor(unseiImg, unsei, explanation, luckyLanguage, luckyDatabase, luckyEditor) {
+		this.unseiImg = unseiImg;
+		this.unsei = unsei;
+		this.explanation = explanation;
+		this.luckyLanguage = luckyLanguage;
+		this.luckyDatabase = luckyDatabase;
+		this.luckyEditor = luckyEditor;
+	}
+}
+
+// おみくじの生成担当
+class God {
+	static unseiImgDictionary = {
+		"大吉": "img/daikiti.png",
+		"凶": "img/kyou.png"
+	}
+
+	static unseiList = [
+		"大吉",
+		"凶",
+	]
+
+	static explanationDictionary = {
+		"大吉": ["comment1", "comment2"],
+		"凶": ["comment3", "comment4"]
+	}
+
+	static luckyLanguageList = [
+		"C",
+		"Jave",
+		"Python",
+		"Ruby"
+	]
+	
+	static luckyDatabaseList = [
+		"MySQL",
+		"PostgreSQL"
+	]
+	
+	static luckyEditorList = [
+		"Atom",
+		"VSCode"
+	]
+	
+	// おみくじの生成
+	static generateOmikuji(num) {
+		let omikujiList = [];
+
+		for (let i = 0; i < num; i++) {
+			let unsei = this.unseiList[getRandomInt(this.unseiList.length)];
+			let unseiImg = this.unseiImgDictionary[unsei];
+			let explanation = this.explanationDictionary[unsei][getRandomInt(this.explanationDictionary[unsei].length)];
+			let luckyLanguage = this.luckyLanguageList[getRandomInt(this.luckyLanguageList.length)];
+			let luckyDatabase = this.luckyDatabaseList[getRandomInt(this.luckyDatabaseList.length)];
+			let luckyEditor = this.luckyEditorList[getRandomInt(this.luckyEditorList.length)];
+
+			let omikuji = new omikujiObject(unseiImg, unsei, explanation, luckyLanguage, luckyDatabase, luckyEditor);
+			omikujiList.push(omikuji);
+		}
+
+		return omikujiList
+	}
+}
+
+// おみくじのリスト生成
+const omikujiList = God.generateOmikuji(10);
+
+
+// おみくじ引く担当
+class Worshiper {
+	static drawOmikuji() {
+		let omikuji = omikujiList[getRandomInt(omikujiList.length)];
+
+		let unseiImg = document.getElementById("unsei_img");
+		unseiImg.src = omikuji.unseiImg;
+
+		let unnsei = document.getElementById("unsei");
+		unnsei.innerHTML = omikuji.unsei;
+
+		let explanation = document.getElementById("explanation");
+		explanation.innerHTML = omikuji.explanation;
+
+		let luckyLanguage = document.getElementById("lucky_language");
+		luckyLanguage.innerHTML = omikuji.luckyLanguage;
+
+		let luckyDatabase = document.getElementById("lucky_dataBase");
+		luckyDatabase.innerHTML = omikuji.luckyDatabase;
+
+		let luckyEditor = document.getElementById("lucky_editor");
+		luckyEditor.innerHTML = omikuji.luckyEditor;
+	}
+}
