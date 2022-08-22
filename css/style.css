@@ -1,14 +1,22 @@
 /* common */
 body {
     background: linear-gradient(rgba(255, 0, 242, 0.15),#fb01d17c);
-
+    min-height: 100vh;
 }
 /* header */
 /* main */
-main .container {
+main .container1 {
+    width: 450px;
+    height: max-content;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+main .container2 {
     width: 450px;
     margin: 0 auto;
-
     padding-top: 20px;
     padding-bottom: 20px;
     text-align: center;
@@ -20,16 +28,20 @@ main .imgDiv{
 
 main .button{
     margin-bottom: 30px;
+    /* color:black;
+    background-color: red;
+    border-radius: 15px;
+    text-decoration: black; */
+}
+
+main a{
+    font-size: x-small;
 }
 
 main .links {
     display: flex;
     justify-content: center;
     gap: 15px;
-}
-
-main a{
-    font-size: x-small;
 }
 
 main .red_line{

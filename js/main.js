@@ -17,22 +17,23 @@ let ItemList = [
 class Screen{
     static activate_Results_Screen(){
         let results_screen = document.getElementById("result");
-        results_screen.style.visibility = "visible";
+        results_screen.classList.add("d-block");
+        results_screen.classList.remove("d-none");
     }   
-
     static inactivate_Results_Screen(){
         let results_screen = document.getElementById("result");
-        results_screen.style.visibility = "hidden";
+        results_screen.classList.remove("d-block");
+        results_screen.classList.add("d-none");
     }
-
     static activate_Start_Screen(){
         let start_screen = document.getElementById("start");
-        start_screen.style.visibility = "visible";
+        start_screen.classList.add("d-block");
+        start_screen.classList.remove("d-none");
     }
-
     static inactivate_Start_Screen(){
         let start_screen = document.getElementById("start");
-        start_screen.style.visibility = "hidden";
+        start_screen.classList.remove("d-block");
+        start_screen.classList.add("d-none");
     }
 }
 
@@ -67,8 +68,8 @@ class Button{
 
         start_button.addEventListener("click", function(){
             console.log("detect_Start_Button");
-            Screen.activate_Results_Screen();
             Screen.inactivate_Start_Screen();
+            Screen.activate_Results_Screen();
             Omikuji.execute_Omikuji();
         })
     }
@@ -78,8 +79,8 @@ class Button{
 
         retry_button.addEventListener("click", function(){
             console.log("detect_Retry_Button");
-            Screen.activate_Start_Screen();
             Screen.inactivate_Results_Screen();
+            Screen.activate_Start_Screen();
         })
     }
 }
